@@ -15,23 +15,20 @@
       <ion-item routerLink="/catalog">Catalog</ion-item>
       <ion-item routerLink="/ai-history">History</ion-item>
        <ion-item routerLink="/ai-pairings">Recommendations</ion-item>
-      <ion-item routerLink="/contacto">Contact</ion-item>
+      <ion-item routerLink="/contact">Contact</ion-item>
       <ion-item routerLink="/aboutus">About Us</ion-item>
     </ion-list>
   </ion-content>
 </ion-menu>
 
-<!-- HEADER -->
-<ion-header class="main-header">
+ <ion-header class="main-header">
   <ion-toolbar color="dark">
 
-    <!-- HAMBURGUESA MÓVIL -->
-    <ion-buttons slot="start" class="mobile-menu">
+     <ion-buttons slot="start" class="mobile-menu">
       <ion-menu-button autoHide="false"></ion-menu-button>
     </ion-buttons>
 
-    <!-- LOGO -->
-    <ion-title class="brand-title">
+     <ion-title class="brand-title">
       Maison
       <img src="assets/icon/ms.png" class="ms">
       Saveurs
@@ -53,12 +50,11 @@
        <ion-button routerLink="/ai-pairings">Recommendations</ion-button>
              <ion-button routerLink="/wishlist">Wishlist</ion-button>
 
-       <ion-button routerLink="/contacto">Contact</ion-button>
+       <ion-button routerLink="/contact">Contact</ion-button>
       <ion-button routerLink="/aboutus">About Us</ion-button>
     </ion-buttons>
 
-    <!-- BOTÓN USUARIO -->
-    <ion-buttons slot="end">
+     <ion-buttons slot="end">
       <ion-button
         *ngIf="auth.isAuthenticated()"
         class="user-menu-button"

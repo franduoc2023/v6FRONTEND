@@ -1,11 +1,9 @@
-<!-- src/app/contact/contact.page.html -->
-
+ 
 <div class="contact-page">
   <div class="page-content contact">
     <div class="contact-layout">
 
-      <!-- COLUMNA IZQUIERDA (VIDEO) -->
-<ion-card
+ <ion-card
   class="contact-banner contact-banner-left"
   button="true"
   [routerLink]="['/about']"
@@ -26,8 +24,7 @@
 </ion-card>
 
 
-      <!-- COLUMNA CENTRAL (FORMULARIO) -->
-      <div class="contact-main">
+       <div class="contact-main">
 
         <h1 class="contact-title">CONTACT</h1>
 
@@ -46,8 +43,7 @@
           </div>
         </div>
 
-        <!-- TARJETA DEL FORMULARIO -->
-        <div class="contact-card">
+         <div class="contact-card">
           <h2 class="contact-card-title">Send us a message</h2>
 
           <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
@@ -128,8 +124,7 @@
               </ion-item>
             </div>
 
-            <!-- MESSAGE -->
-            <div class="form-field">
+             <div class="form-field">
               <ion-item
                 class="contact-item contact-textarea-item"
                 [ngClass]="{
@@ -183,8 +178,7 @@
         </div>
       </div>
 
-      <!-- COLUMNA DERECHA (IMAGEN) -->
-      <ion-card
+       <ion-card
         class="contact-banner contact-banner-right"
         button="true"
         [routerLink]="[' ']"
