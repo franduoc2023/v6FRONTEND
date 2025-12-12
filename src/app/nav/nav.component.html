@@ -1,0 +1,84 @@
+<!-- MENÚ LATERAL -->
+<ion-menu contentId="main-content" type="overlay">
+  <ion-content class="ion-padding">
+    <ion-list>
+      <ion-item routerLink="/home">Home</ion-item>
+
+      <!-- ⛔ OCULTAR LOGIN SI YA ESTÁ LOGUEADO -->
+      <ion-item 
+        routerLink="/login" 
+        *ngIf="!auth.isAuthenticated()"
+      >
+        Login
+      </ion-item>
+
+      <ion-item routerLink="/catalog">Catalog</ion-item>
+      <ion-item routerLink="/ai-history">History</ion-item>
+       <ion-item routerLink="/ai-pairings">Recommendations</ion-item>
+      <ion-item routerLink="/contacto">Contact</ion-item>
+      <ion-item routerLink="/aboutus">About Us</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<!-- HEADER -->
+<ion-header class="main-header">
+  <ion-toolbar color="dark">
+
+    <!-- HAMBURGUESA MÓVIL -->
+    <ion-buttons slot="start" class="mobile-menu">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+
+    <!-- LOGO -->
+    <ion-title class="brand-title">
+      Maison
+      <img src="assets/icon/ms.png" class="ms">
+      Saveurs
+    </ion-title>
+
+    <!-- MENÚ ESCRITORIO -->
+    <ion-buttons slot="end" class="desktop-menu">
+      <ion-button routerLink="/home">Home</ion-button>
+
+       <ion-button 
+        routerLink="/login"
+        *ngIf="!auth.isAuthenticated()"
+      >
+        Login
+      </ion-button>
+
+      <ion-button routerLink="/catalog">Catalog</ion-button>
+      <ion-button routerLink="/ai-history">History</ion-button>
+       <ion-button routerLink="/ai-pairings">Recommendations</ion-button>
+             <ion-button routerLink="/wishlist">Wishlist</ion-button>
+
+       <ion-button routerLink="/contacto">Contact</ion-button>
+      <ion-button routerLink="/aboutus">About Us</ion-button>
+    </ion-buttons>
+
+    <!-- BOTÓN USUARIO -->
+    <ion-buttons slot="end">
+      <ion-button
+        *ngIf="auth.isAuthenticated()"
+        class="user-menu-button"
+        (click)="toggleMenu($event)"
+      >
+        <ion-icon name="person-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+
+  <!-- PANEL DE USUARIO -->
+  <div 
+    *ngIf="showMenu"
+    class="user-menu"(mouseleave)="onMouseLeaveMenu()">
+    <p><strong>{{ auth.userProfile?.name }}</strong></p>
+    <p>{{ auth.userProfile?.email }}</p>
+
+    <button routerLink="/profile">Profile</button>
+    <button (click)="auth.logout()">Logout</button>
+  </div>
+
+</ion-header>

@@ -1,0 +1,341 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>saveurs-maison documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	   <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/dark.css">
+        <link rel="stylesheet" href="./styles/material.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="./" class="navbar-brand">saveurs-maison documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content readme">
+                   <div class="content-data">
+
+
+<h2>SAVEURS MAISON – APP IONIC + ANGULAR CON AUTENTICACION AZURE B2C</h2>
+<p>Aplicacion desarrollada en Ionic + Angular (standalone) con login Azure AD B2C.
+Compatible con Web y Android.</p>
+<hr>
+<h2>REQUISITOS</h2>
+<ul>
+<li>Node.js 18+</li>
+<li>Ionic CLI (npm install -g @ionic/cli)</li>
+<li>Android Studio (para compilar en Android)</li>
+<li>Cuenta Azure B2C configurada</li>
+<li>Opcional recomendado: Compodoc para documentacion tecnica</li>
+</ul>
+<hr>
+<h2>CÓMO CLONAR Y EJECUTAR</h2>
+<ol>
+<li><p>Clonar repositorio:
+git clone <a href="https://github.com/franduoc2023/BFFteting">https://github.com/franduoc2023/BFFteting</a>
+cd saveurs-maison</p>
+</li>
+<li><p>Instalar dependencias:
+npm install</p>
+</li>
+<li><p>Crear archivo de entorno Android:
+(ruta: src/environments/environment.android.ts)</p>
+<p>export const environmentAndroid = {
+  azureB2C: {
+tenantName: &#39;tutenlab.onmicrosoft.com&#39;,
+clientId: &#39;XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX&#39;,
+authorityDomain: &#39;tutenlab.b2clogin.com&#39;,
+signInSignUpPolicy: &#39;B2C_1_signin_signup&#39;,
+redirectUri: &#39;com.saveurs.maison://auth&#39;,
+apiScopes: [&#39;<a href="https://tutenlab.onmicrosoft.com/api/demo.read'%5D">https://tutenlab.onmicrosoft.com/api/demo.read&#39;]</a>
+  }
+};</p>
+</li>
+</ol>
+<p>Este archivo queda adjuntado en la documentacion para el docente.</p>
+<hr>
+<h2>DOCUMENTACION TECNICA (COMPODOC)</h2>
+<p>Compodoc genera documentacion de:</p>
+<ul>
+<li>Componentes</li>
+<li>Servicios</li>
+<li>Rutas</li>
+<li>Interfaces</li>
+<li>Arquitectura</li>
+<li>Comentarios JSDoc</li>
+</ul>
+<p>Instalar:
+  npm install --save-dev @compodoc/compodoc</p>
+<p>Agregar scripts en package.json:
+  &quot;docs&quot;: &quot;compodoc -p tsconfig.json -s --port 4201 --theme material&quot;,
+  &quot;docs:build&quot;: &quot;compodoc -p tsconfig.json --theme material&quot;</p>
+<p>Ejecutar servidor de documentacion:
+  npm run docs
+Disponible en:
+  <a href="http://127.0.0.1:4201">http://127.0.0.1:4201</a></p>
+<p>Generar documentacion estatica:
+  npm run docs:build</p>
+<hr>
+<h2>EJECUTAR EN WEB</h2>
+<p>ionic serve</p>
+<hr>
+<h2>EJECUTAR EN ANDROID</h2>
+<p>npm run build
+npx cap sync android
+npx cap open android</p>
+<hr>
+<h2>FLUJO DE LOGIN</h2>
+<ul>
+<li>Boton Login abre Azure B2C</li>
+<li>Usuario se autentica</li>
+<li>Azure redirige a com.saveurs.maison://auth</li>
+<li>App guarda tokens</li>
+<li>Se carga el perfil</li>
+<li>Logout cierra sesion y limpia tokens</li>
+<li>Icono de logout aparece cuando hay sesion iniciada</li>
+</ul>
+<hr>
+<h2>ESTRUCTURA DEL PROYECTO</h2>
+<p>src/
+  app/
+    home/
+    profile/
+    catalog/
+    wishlist/
+    nav/
+    footer/
+    auth/
+  environments/</p>
+<hr>
+<h2>FUNCIONALIDADES IMPLEMENTADAS</h2>
+<ul>
+<li>Componente Nav agregado</li>
+<li>Componente Footer agregado</li>
+<li>app.component integrado con Nav y Footer globales</li>
+<li>Login mediante Azure B2C</li>
+<li>Menu hamburguesa responsivo</li>
+<li>Pagina Catalog con:<ul>
+<li>GET productos</li>
+<li>Busqueda</li>
+<li>Filtro wines/cheeses</li>
+<li>Loading state</li>
+<li>Empty state</li>
+</ul>
+</li>
+<li>Pagina Wishlist con:<ul>
+<li>Tarjetas estilo catalogo</li>
+<li>Boton Add to wishlist</li>
+<li>Animacion fade-out al eliminar</li>
+</ul>
+</li>
+<li>Pagina Profile reconstruida con:<ul>
+<li>Formulario reactivo</li>
+<li>Validaciones elegantes sin alert</li>
+<li>Mensajes de exito/error en UI</li>
+</ul>
+</li>
+<li>CSS global corregido para compatibilidad con:<ul>
+<li>Chrome</li>
+<li>Firefox</li>
+<li>Brave</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>TESTEADO EN</h2>
+<ul>
+<li>Android Emulator Pixel 6 API 33</li>
+<li>Chrome</li>
+<li>Firefox</li>
+<li>Brave</li>
+</ul>
+<hr>
+<h2>ISSUES DETECTADOS</h2>
+<ul>
+<li>7 vulnerabilidades pendientes (npm audit)</li>
+<li>Transiciones con detalles visuales</li>
+<li>Bug en menu hamburguesa mobile (CSS global)</li>
+<li>Carpeta &quot;page&quot; mal ubicada (requiere reorganizacion)</li>
+</ul>
+<hr>
+<h2>AUTORES</h2>
+<p>Mauricio Mora
+Francisco Salinas
+Duoc UC – Taller Aplicado de Software</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'readme';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+
+       <script src="./js/menu-wc.js" defer></script>
+       <script nomodule src="./js/menu-wc_es5.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

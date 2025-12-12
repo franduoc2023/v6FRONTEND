@@ -1,0 +1,112 @@
+.app-footer {
+  --background: #000;     /* fondo negro del footer */
+  color: #fff;
+}
+
+/* contenedor centrado */
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+/* fila superior */
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+/* fila del medio (3 columnas) */
+.footer-middle {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.footer-logo-box {
+  background: #111;
+  padding: 24px;
+  min-width: 220px;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.footer-contact,
+.footer-mission {
+  min-width: 220px;
+  flex: 1;
+}
+
+/* fila inferior */
+.footer-bottom {
+  border-top: 1px solid #222;
+  padding-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 8px;
+}
+
+.footer-links a {
+  color: #fff;
+  margin-left: 16px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+/* input + botón suscripción */
+.subscribe-row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.subscribe-input {
+  padding: 8px 10px;
+  border-radius: 4px;
+  border: none;
+  flex: 1;
+}
+
+.subscribe-button,
+.mision-button {
+  background: #4b0082;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.subscribe-button:hover,
+.mision-button:hover {
+  background: #5c00a8;
+}
+
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.social-icon {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  filter: brightness(0) invert(1); 
+}

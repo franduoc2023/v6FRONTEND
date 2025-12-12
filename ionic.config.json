@@ -1,0 +1,7 @@
+{
+  "name": "saveurs-maison",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

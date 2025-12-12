@@ -1,0 +1,198 @@
+<!-- src/app/ai-pairings/ai-pairings.page.html -->
+
+<div class="page-content ai-page">
+
+  <!-- SPINNER A PANTALLA COMPLETA (sólo para cargar catálogo) -->
+  <div *ngIf="loadingCatalog" class="ai-loading-wrapper">
+    <ion-spinner name="crescent" class="ai-loading"></ion-spinner>
+  </div>
+
+  <!-- TÍTULO TIPO CATALOG / HISTORY -->
+  <h1 class="ai-title-card">AI PAIRINGS</h1>
+  <p class="ai-subtitle">
+    Discover perfect wine and cheese combinations 🍷🧀
+  </p>
+
+  <!-- Mensaje de error -->
+  <div class="status-msg error" *ngIf="errorMsg">
+    {{ errorMsg }}
+  </div>
+
+  <!-- Layout principal -->
+  <div class="pairing-layout">
+
+    <!-- ========== Selector catálogo (izquierda) ========== -->
+    <section class="card selector-card">
+
+      <div class="card-header">
+        <h2>Catalog</h2>
+        <span class="card-subtitle">Choose a product and find pairings</span>
+      </div>
+
+      <!-- Toggle vino / queso -->
+      <div class="toggle-group">
+        <button
+          type="button"
+          class="toggle-btn"
+          [class.active]="mode === 'wine'"
+          (click)="setMode('wine')">
+          🍷 Wine
+        </button>
+
+        <button
+          type="button"
+          class="toggle-btn"
+          [class.active]="mode === 'cheese'"
+          (click)="setMode('cheese')">
+          🧀 Cheese
+        </button>
+      </div>
+
+      <!-- Select productos -->
+      <div class="form-field">
+        <label>{{ mode === 'wine' ? 'Select a wine' : 'Select a cheese' }}</label>
+
+        <select *ngIf="mode === 'wine'" [(ngModel)]="selectedWineId">
+          <option [ngValue]="null">-- Choose a wine --</option>
+          <option *ngFor="let w of wines" [ngValue]="w.id">
+            {{ w.nameEn }} · {{ w.origin }} · ${{ w.price }}
+          </option>
+        </select>
+
+        <select *ngIf="mode === 'cheese'" [(ngModel)]="selectedCheeseId">
+          <option [ngValue]="null">-- Choose a cheese --</option>
+          <option *ngFor="let c of cheeses" [ngValue]="c.id">
+            {{ c.nameEn }} · {{ c.origin }} · ${{ c.price }}
+          </option>
+        </select>
+      </div>
+
+      <button
+        class="btn-primary"
+        (click)="searchFromSelection()"
+        [disabled]="loadingAi || loadingCatalog">
+        {{ loadingAi ? 'Searching…' : 'Search pairings' }}
+      </button>
+
+      <!-- RESULTADOS DEL CATÁLOGO -->
+      <div class="results-left"
+           *ngIf="!loadingAi && !loadingCatalog && resultSource === 'catalog' && lastResponse">
+
+        <h3>Recommended by AI</h3>
+        <p class="answer-text">{{ lastResponse.answer }}</p>
+
+        <!-- WINE CARDS -->
+        <div *ngIf="recommendedWines.length" class="ai-products-section">
+          <h4 class="ai-subtitle-section">Recommended wines</h4>
+
+          <div class="ai-products-grid">
+            <div class="ai-product-card" *ngFor="let wine of recommendedWines">
+              <img [src]="wine.imageUrl" class="ai-product-image" />
+              <h5 class="ai-product-title">{{ wine.nameEn }}</h5>
+
+              <p><strong>Origin:</strong> {{ wine.origin }}</p>
+              <p *ngIf="wine.flavors"><strong>Flavors:</strong> {{ wine.flavors }}</p>
+              <p><strong>Price:</strong> {{ wine.price | currency:'NZD':'symbol-narrow' }}</p>
+
+              <p class="ai-product-description">{{ wine.descriptionEn }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CHEESE CARDS -->
+        <div *ngIf="recommendedCheeses.length" class="ai-products-section">
+          <h4 class="ai-subtitle-section">Recommended cheeses</h4>
+
+          <div class="ai-products-grid">
+            <div class="ai-product-card" *ngFor="let cheese of recommendedCheeses">
+              <img [src]="cheese.imageUrl" class="ai-product-image" />
+
+              <h5 class="ai-product-title">{{ cheese.nameEn }}</h5>
+              <p><strong>Origin:</strong> {{ cheese.origin }}</p>
+              <p *ngIf="cheese.flavors"><strong>Flavors:</strong> {{ cheese.flavors }}</p>
+
+              <p class="ai-product-description">{{ cheese.descriptionEn }}</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ========== Chat IA (derecha) ========== -->
+    <section class="card ai-card">
+
+      <div class="card-header">
+        <h2>AI Chat</h2>
+        <span class="card-subtitle">Describe your situation and get a pairing</span>
+      </div>
+
+      <div class="form-field">
+        <label>Message</label>
+        <textarea rows="4" [(ngModel)]="message"></textarea>
+      </div>
+
+      <button
+        class="btn-secondary"
+        (click)="sendPrompt()"
+        [disabled]="loadingAi || loadingCatalog">
+        {{ loadingAi ? 'Asking…' : 'Send to AI' }}
+      </button>
+
+      <!-- RESULTADOS DEL CHAT -->
+      <div class="results-right"
+           *ngIf="!loadingAi && !loadingCatalog && resultSource === 'chat' && lastResponse">
+
+        <h3>AI Recommendation</h3>
+        <p class="answer-text">{{ lastResponse.answer }}</p>
+
+        <!-- WINE CARDS -->
+        <div *ngIf="recommendedWines.length" class="ai-products-section">
+          <h4 class="ai-subtitle-section">Recommended wines</h4>
+
+          <div class="ai-products-grid">
+            <div class="ai-product-card" *ngFor="let wine of recommendedWines">
+              <img [src]="wine.imageUrl" class="ai-product-image" />
+              <h5 class="ai-product-title">{{ wine.nameEn }}</h5>
+
+              <p><strong>Origin:</strong> {{ wine.origin }}</p>
+              <p *ngIf="wine.flavors"><strong>Flavors:</strong> {{ wine.flavors }}</p>
+              <p><strong>Price:</strong> {{ wine.price | currency:'NZD':'symbol-narrow' }}</p>
+
+              <p class="ai-product-description">{{ wine.descriptionEn }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CHEESE CARDS -->
+        <div *ngIf="recommendedCheeses.length" class="ai-products-section">
+          <h4 class="ai-subtitle-section">Recommended cheeses</h4>
+
+          <div class="ai-products-grid">
+            <div class="ai-product-card" *ngFor="let cheese of recommendedCheeses">
+              <img [src]="cheese.imageUrl" class="ai-product-image" />
+
+              <h5 class="ai-product-title">{{ cheese.nameEn }}</h5>
+              <p><strong>Origin:</strong> {{ cheese.origin }}</p>
+              <p *ngIf="cheese.flavors"><strong>Flavors:</strong> {{ cheese.flavors }}</p>
+
+              <p class="ai-product-description">{{ cheese.descriptionEn }}</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SELECTOR DE IDIOMA -->
+    <div class="language-bar">
+      <label>Language</label>
+      <select [(ngModel)]="locale">
+        <option value="en">English</option>
+        <option value="fr">France</option>
+        <option value="es">Español</option>
+      </select>
+    </div>
+  </div>
+</div>

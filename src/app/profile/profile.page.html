@@ -1,0 +1,148 @@
+<!-- src/app/profile/profile.page.html -->
+
+<div class="page-content catalog profile-page">
+
+  <!-- TÍTULO TIPO CATALOG/WISHLIST -->
+  <h1 class="catalog-title">MY PROFILE</h1>
+
+  <!-- TARJETA: CUENTA AZURE B2C -->
+  <section class="profile-card profile-account-card" *ngIf="idTokenProfile as p">
+    <h2>Account (Azure B2C)</h2>
+
+    <p><span class="label">Name:</span> {{ p.name }}</p>
+    <p><span class="label">Email:</span> {{ p.email }}</p>
+    <p *ngIf="p.oid">
+      <span class="label">OID:</span> {{ p.oid }}
+    </p>
+  </section>
+
+  <!-- TARJETA: PERFIL APP (FORMULARIO) -->
+  <section class="profile-card profile-form-card">
+
+    <h2>App Profile (User Service)</h2>
+
+    <!-- Mensajes globales -->
+    <div class="status-msg success" *ngIf="successMsg">
+      {{ successMsg }}
+    </div>
+
+    <div class="status-msg error" *ngIf="errorMsg">
+      {{ errorMsg }}
+    </div>
+
+    <!-- Indicador de carga -->
+    <p class="loading-msg" *ngIf="loading">Loading profile...</p>
+
+    <!-- FORMULARIO REACTIVO -->
+    <form
+      *ngIf="!loading"
+      [formGroup]="profileForm"
+      (ngSubmit)="saveProfile()">
+
+      <!-- First Name -->
+      <div class="form-field">
+        <label for="firstName">First Name *</label>
+        <input
+          id="firstName"
+          type="text"
+          formControlName="firstName"
+          autocomplete="given-name"
+        />
+
+        <p class="error-msg"
+           *ngIf="f.firstName.errors?.['required'] && f.firstName.touched">
+          First name is required.
+        </p>
+
+        <p class="error-msg"
+           *ngIf="f.firstName.errors?.['minlength'] && f.firstName.touched">
+          Minimum 2 characters.
+        </p>
+
+        <p class="error-msg"
+           *ngIf="f.firstName.errors?.['pattern'] && f.firstName.touched">
+          Only letters are allowed.
+        </p>
+      </div>
+
+      <!-- Last Name -->
+      <div class="form-field">
+        <label for="lastName">Last Name *</label>
+        <input
+          id="lastName"
+          type="text"
+          formControlName="lastName"
+          autocomplete="family-name"
+        />
+
+        <p class="error-msg"
+           *ngIf="f.lastName.errors?.['required'] && f.lastName.touched">
+          Last name is required.
+        </p>
+
+        <p class="error-msg"
+           *ngIf="f.lastName.errors?.['minlength'] && f.lastName.touched">
+          Minimum 2 characters.
+        </p>
+
+        <p class="error-msg"
+           *ngIf="f.lastName.errors?.['pattern'] && f.lastName.touched">
+          Only letters are allowed.
+        </p>
+      </div>
+
+      <!-- Language -->
+      <div class="form-field">
+        <label for="language">Language *</label>
+        <select
+          id="language"
+          formControlName="language">
+          <option value="en-NZ">English (NZ)</option>
+          <option value="en-US">English (US)</option>
+          <option value="es-CL">Español (CL)</option>
+        </select>
+
+        <p class="error-msg"
+           *ngIf="f.language.errors?.['required'] && f.language.touched">
+          Language is required.
+        </p>
+      </div>
+
+      <!-- Email (solo lectura, desde B2C) -->
+      <div class="form-field readonly">
+        <label>Email (from B2C)</label>
+        <input
+          type="text"
+          [value]="idTokenProfile?.email || '—'"
+          disabled
+        />
+      </div>
+
+      <!-- Rol (solo lectura, desde backend) -->
+      <div class="form-field readonly" *ngIf="backendProfile as b">
+        <label>Role</label>
+        <input
+          type="text"
+          [value]="b.role || 'CUSTOMER'"
+          disabled
+        />
+      </div>
+
+      <!-- BOTÓN GUARDAR -->
+      <button
+        type="submit"
+        class="btn-primary"
+        [disabled]="profileForm.invalid || saving">
+        {{ saving ? 'SAVING…' : 'SAVE PROFILE' }}
+      </button>
+
+    </form>
+  </section>
+
+  <!-- BOTÓN VOLVER A HOME -->
+  <button class="btn-secondary" routerLink="/home">
+    BACK TO HOME
+  </button>
+
+</div>
+

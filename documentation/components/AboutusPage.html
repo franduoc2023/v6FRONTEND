@@ -1,0 +1,763 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>saveurs-maison documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">saveurs-maison documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  AboutusPage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/aboutus/aboutus.page.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-aboutus</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>IonicModule</code>
+                            <code>IonContent</code>
+                            <code>IonHeader</code>
+                            <code>IonTitle</code>
+                            <code>IonToolbar</code>
+                            <code>CommonModule</code>
+                            <code>FormsModule</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./aboutus.page.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./aboutus.page.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/aboutus/aboutus.page.ts:14</a></div>
+                            </td>
+                        </tr>
+
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="18"
+                                    class="link-to-prism">src/app/aboutus/aboutus.page.ts:18</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { IonContent, IonHeader, IonTitle, IonToolbar } from &#x27;@ionic/angular/standalone&#x27;;
+import { IonicModule } from &#x27;@ionic/angular&#x27;;
+
+@Component({
+  selector: &#x27;app-aboutus&#x27;,
+  templateUrl: &#x27;./aboutus.page.html&#x27;,
+  styleUrls: [&#x27;./aboutus.page.scss&#x27;],
+  standalone: true,
+  imports: [IonicModule,IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+})
+export class AboutusPage implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;h1 class&#x3D;&quot;catalog-title&quot;&gt;ABOUT US&lt;/h1&gt;
+
+&lt;div class&#x3D;&quot;timeline&quot;&gt;
+
+  &lt;!-- TODAY --&gt;
+  &lt;div class&#x3D;&quot;timeline-item left&quot;&gt;
+    &lt;div class&#x3D;&quot;timeline-content&quot;&gt;
+      &lt;h2&gt;Today&lt;/h2&gt;
+      &lt;p&gt;
+        Enjoy a gourmet stop in L&#x27;Atelier du Fromage for breakfast, lunch or a little treat
+        and fall in love with New Zealand&#x27;s largest selection of French cheeses,
+        charcuterie and delicacies.
+      &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;timeline-image&quot;&gt;
+      &lt;img src&#x3D;&quot;assets/icon/queso.png&quot; alt&#x3D;&quot;L&#x27;Atelier du Fromage&quot;&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- 1991 --&gt;
+  &lt;div class&#x3D;&quot;timeline-item right&quot;&gt;
+    &lt;div class&#x3D;&quot;timeline-content&quot;&gt;
+      &lt;h2&gt;1991&lt;/h2&gt;
+      &lt;p&gt;
+        1991 Jean-Christophe took the opportunity to travel to New-Zealand to learn more about NZ wines.
+        Six months after arriving he would meet his future wife and some years later, his business partners,
+        Peter &amp; Scott.
+      &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;timeline-image&quot;&gt;
+      &lt;img src&#x3D;&quot;assets/about/1991.jpg&quot; alt&#x3D;&quot;1991 Maison Vauron&quot;&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- FAMILY --&gt;
+  &lt;div class&#x3D;&quot;timeline-item left&quot;&gt;
+    &lt;div class&#x3D;&quot;timeline-content&quot;&gt;
+      &lt;h2&gt;Family &amp; Partnership&lt;/h2&gt;
+      &lt;p&gt;
+        The influence of family has always been strong, with siblings of both JC and Peter involved
+        in various parts of the operation and are still involved today, likewise the partners of
+        both JC and Scott work in the business.
+      &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;timeline-image&quot;&gt;
+      &lt;img src&#x3D;&quot;assets/about/family.jpg&quot; alt&#x3D;&quot;Family and Partners&quot;&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- 2000 --&gt;
+  &lt;div class&#x3D;&quot;timeline-item right&quot;&gt;
+    &lt;div class&#x3D;&quot;timeline-content&quot;&gt;
+      &lt;h2&gt;2000&lt;/h2&gt;
+      &lt;p&gt;
+        2000 Maison Vauron moved from Boston Road to our current location in Newmarket.
+        Welcome to McColl Street!
+      &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;timeline-image&quot;&gt;
+      &lt;img src&#x3D;&quot;assets/about/2000.jpg&quot; alt&#x3D;&quot;Maison Vauron 2000&quot;&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- 2005 --&gt;
+  &lt;div class&#x3D;&quot;timeline-item left&quot;&gt;
+    &lt;div class&#x3D;&quot;timeline-content&quot;&gt;
+      &lt;h2&gt;2005&lt;/h2&gt;
+      &lt;p&gt;
+        2005 saw the introduction of La Fromagerie to Maison Vauron.
+        La Fromagerie under the guidance of Gilles Mereau is now regarded as the leading importer
+        and distributor of French cheeses and specialty goods in New-Zealand.
+      &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;timeline-image&quot;&gt;
+      &lt;img src&#x3D;&quot;assets/about/2005.jpg&quot; alt&#x3D;&quot;La Fromagerie 2005&quot;&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- 2010 --&gt;
+  &lt;div class&#x3D;&quot;timeline-item right&quot;&gt;
+    &lt;div class&#x3D;&quot;timeline-content&quot;&gt;
+      &lt;h2&gt;2010&lt;/h2&gt;
+      &lt;p&gt;
+        2010 Gilles was awarded the medal of &quot;Ordre du Mérite agricole&quot;
+        by the French Ambassador of New Zealand.
+      &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;timeline-image&quot;&gt;
+      &lt;img src&#x3D;&quot;assets/about/2010.jpg&quot; alt&#x3D;&quot;Ordre du Mérite agricole 2010&quot;&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./aboutus.page.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">/* &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; */
+/*       LOGIN TITLE     */
+/* &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; */
+
+.catalog-title {
+  position: relative;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  margin: 20px auto 10px;
+  width: 100%;
+  max-width: 500px;
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Icono izquierda */
+.catalog-title::before {
+  content: &quot;&quot;;
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background-image: url(&quot;https://unpkg.com/ionicons@7.1.2/dist/svg/pizza-outline.svg&quot;);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Icono derecha */
+.catalog-title::after {
+  content: &quot;&quot;;
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background-image: url(&quot;https://unpkg.com/ionicons@7.1.2/dist/svg/wine-outline.svg&quot;);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; */
+/*     LOGIN WRAPPER     */
+/* &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; */
+
+.catalog-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 16px 40px;
+  margin-top: 10px;
+}
+
+/* &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; */
+/*      LOGIN CARD       */
+/* &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; */
+
+.catalog-card {
+  width: 100%;
+  max-width: 500px;
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* CONTENEDOR DEL ABOUT (fondo blanco) */
+.about-content {
+  --background: #ffffff;
+  padding: 24px 12px 40px;
+}
+
+/* &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; TIMELINE GENERAL &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; */
+
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: 24px auto 40px;
+  padding: 0 8px;
+}
+
+/* Línea vertical central */
+.timeline::before {
+  content: &quot;&quot;;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: rgba(0, 0, 0, 0.08);
+  transform: translateX(-50%);
+}
+
+/* Cada hito */
+.timeline-item {
+  display: flex;
+  align-items: stretch;
+  gap: 24px;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+/* Punto sobre la línea */
+.timeline-item::before {
+  content: &quot;&quot;;
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background: #f5c118;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(245, 193, 24, 0.25);
+}
+
+/* Alternancia tipo “S” */
+.timeline-item.left {
+  flex-direction: row;
+}
+
+.timeline-item.right {
+  flex-direction: row-reverse;
+}
+
+/* Contenido tipo tarjeta (mismo estilo “ABOUT US”) */
+.timeline-content {
+  flex: 0 0 45%;
+  background: #f3f3f3;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.timeline-content h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #f5c118;  /* mismo amarillo del título de ejemplo */
+}
+
+.timeline-content p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #222;
+}
+
+/* Contenedor de imagen */
+.timeline-image {
+  flex: 0 0 45%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline-image img {
+  width: 100%;
+  max-width: 260px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+}
+
+/* &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; RESPONSIVE: en móvil todo en columna &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; */
+
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 16px;
+  }
+
+  .timeline-item,
+  .timeline-item.left,
+  .timeline-item.right {
+    flex-direction: column;
+    padding-left: 32px;
+  }
+
+  .timeline-item::before {
+    left: 16px;
+    transform: translateX(0);
+  }
+
+  .timeline-content,
+  .timeline-image {
+    flex: 1 1 100%;
+  }
+
+  .timeline-image img {
+    max-width: 100%;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><h1 class="catalog-title">ABOUT US</h1><div class="timeline">  <!-- TODAY -->  <div class="timeline-item left">    <div class="timeline-content">      <h2>Today</h2>      <p>        Enjoy a gourmet stop in L\'Atelier du Fromage for breakfast, lunch or a little treat        and fall in love with New Zealand\'s largest selection of French cheeses,        charcuterie and delicacies.      </p>    </div>    <div class="timeline-image">      <img src="assets/icon/queso.png" alt="L\'Atelier du Fromage">    </div>  </div>  <!-- 1991 -->  <div class="timeline-item right">    <div class="timeline-content">      <h2>1991</h2>      <p>        1991 Jean-Christophe took the opportunity to travel to New-Zealand to learn more about NZ wines.        Six months after arriving he would meet his future wife and some years later, his business partners,        Peter & Scott.      </p>    </div>    <div class="timeline-image">      <img src="assets/about/1991.jpg" alt="1991 Maison Vauron">    </div>  </div>  <!-- FAMILY -->  <div class="timeline-item left">    <div class="timeline-content">      <h2>Family & Partnership</h2>      <p>        The influence of family has always been strong, with siblings of both JC and Peter involved        in various parts of the operation and are still involved today, likewise the partners of        both JC and Scott work in the business.      </p>    </div>    <div class="timeline-image">      <img src="assets/about/family.jpg" alt="Family and Partners">    </div>  </div>  <!-- 2000 -->  <div class="timeline-item right">    <div class="timeline-content">      <h2>2000</h2>      <p>        2000 Maison Vauron moved from Boston Road to our current location in Newmarket.        Welcome to McColl Street!      </p>    </div>    <div class="timeline-image">      <img src="assets/about/2000.jpg" alt="Maison Vauron 2000">    </div>  </div>  <!-- 2005 -->  <div class="timeline-item left">    <div class="timeline-content">      <h2>2005</h2>      <p>        2005 saw the introduction of La Fromagerie to Maison Vauron.        La Fromagerie under the guidance of Gilles Mereau is now regarded as the leading importer        and distributor of French cheeses and specialty goods in New-Zealand.      </p>    </div>    <div class="timeline-image">      <img src="assets/about/2005.jpg" alt="La Fromagerie 2005">    </div>  </div>  <!-- 2010 -->  <div class="timeline-item right">    <div class="timeline-content">      <h2>2010</h2>      <p>        2010 Gilles was awarded the medal of "Ordre du Mérite agricole"        by the French Ambassador of New Zealand.      </p>    </div>    <div class="timeline-image">      <img src="assets/about/2010.jpg" alt="Ordre du Mérite agricole 2010">    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AboutusPage', 'selector': 'app-aboutus'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CatalogPage', 'selector': 'app-catalog'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'NavComponent', 'selector': 'app-nav'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'TemplatePlaygroundComponent', 'selector': 'template-playground-root'},{'name': 'WishlistPage', 'selector': 'app-wishlist'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AboutusPage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AboutusPage.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

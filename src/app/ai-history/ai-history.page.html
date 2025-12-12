@@ -1,0 +1,89 @@
+<!-- src/app/ai-history/ai-history.page.html -->
+
+<div class="history-page">
+
+  <!-- SPINNER DE CARGA A PANTALLA COMPLETA -->
+  <div *ngIf="isLoggedIn && loading" class="history-loading-wrapper">
+    <ion-spinner name="crescent" class="history-loading"></ion-spinner>
+  </div>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="ion-padding history-inner">
+
+<h1 class="history-title-card">AI  HISTORY</h1>
+
+    <!-- Usuario no logeado -->
+    <div *ngIf="!isLoggedIn" class="empty-state">
+      <p>You must be logged in to view your AI pairing history.</p>
+    </div>
+
+    <!-- Sin resultados -->
+    <div
+      *ngIf="isLoggedIn && !loading && items.length === 0"
+      class="empty-state"
+    >
+      <p>You don't have AI recommendations yet. Try asking for a pairing!</p>
+    </div>
+
+    <!-- Lista de historial -->
+    <div
+      *ngIf="isLoggedIn && !loading && items.length > 0"
+      class="history-list"
+    >
+      <ion-card *ngFor="let item of items">
+<ion-card-header>
+  <ion-card-title class="history-date">
+    {{ formatDate(item.createdAt) }}
+  </ion-card-title>
+</ion-card-header>
+
+        <ion-card-content>
+          <p class="history-label">Question</p>
+          <p class="history-message">"{{ item.message }}"</p>
+
+          <p class="history-label">Answer</p>
+          <p class="history-answer">{{ item.answer }}</p>
+
+          <!-- Chips de conteo -->
+          <div class="chips-row">
+            <ion-chip *ngIf="item.recommendedWineIds?.length">
+              <ion-label>{{ item.recommendedWineIds.length }} wine(s)</ion-label>
+            </ion-chip>
+
+            <ion-chip *ngIf="item.recommendedCheeseIds?.length">
+              <ion-label>{{ item.recommendedCheeseIds.length }} cheese(s)</ion-label>
+            </ion-chip>
+          </div>
+
+          <!-- Miniaturas de vinos -->
+          <ng-container *ngIf="resolveWinesFor(item) as winesForItem">
+            <div class="thumbs-row" *ngIf="winesForItem.length">
+              <p class="history-label">Wines</p>
+              <div class="thumbs-scroll">
+                <div class="thumb-card" *ngFor="let wine of winesForItem">
+                  <img [src]="wine.imageUrl" [alt]="wine.nameEn" />
+                  <span>{{ wine.nameEn }}</span>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+
+          <!-- Miniaturas de quesos -->
+          <ng-container *ngIf="resolveCheesesFor(item) as cheesesForItem">
+            <div class="thumbs-row" *ngIf="cheesesForItem.length">
+              <p class="history-label">Cheeses</p>
+              <div class="thumbs-scroll">
+                <div class="thumb-card" *ngFor="let cheese of cheesesForItem">
+                  <img [src]="cheese.imageUrl" [alt]="cheese.nameEn" />
+                  <span>{{ cheese.nameEn }}</span>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+  </div>
+</div>

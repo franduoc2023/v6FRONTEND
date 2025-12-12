@@ -1,0 +1,150 @@
+<!-- src/app/catalog/catalog.page.html -->
+
+<div class="catalog-page">
+
+  <!-- DEBUG VISUAL DE LOADING -->
+ 
+
+  <!-- SPINNER DE CARGA -->
+  <div *ngIf="loading" class="catalog-loading-wrapper">
+    <ion-spinner name="crescent" class="catalog-loading"></ion-spinner>
+  </div>
+
+  <!-- CONTENIDO COMPLETO -->
+  <div *ngIf="!loading" class="page-content catalog">
+
+    <div class="catalog-layout">
+
+      <!-- COLUMNA IZQUIERDA -->
+<ion-card
+  class="catalog-banner catalog-banner-left"
+  button="true"
+  [routerLink]="['/ai-pairings']"
+>
+  <video
+    src="assets/icon/banervideo.mp4"
+    autoplay
+    muted
+    loop
+    playsinline
+    class="banner-video"
+  ></video>
+
+  <h2>Still don't know what to order?</h2>
+  <p>Use our AI to choose your ideal wine and cheese.</p>
+</ion-card>
+      <!-- COLUMNA CENTRAL -->
+      <div class="catalog-main">
+
+        <h1 class="catalog-title">CATALOG</h1>
+
+        <ion-searchbar
+          class="catalog-search"
+          placeholder="Search..."
+          (ionInput)="onSearch($event)">
+        </ion-searchbar>
+
+        <!-- TOGGLE -->
+        <div class="catalog-toggle">
+          <ion-button
+            class="btn-wines"
+            [fill]="selectedType === 'wines' ? 'solid' : 'outline'"
+            (click)="onSelect('wines')">
+            WINES
+          </ion-button>
+
+          <ion-button
+            class="btn-cheese"
+            [fill]="selectedType === 'cheeses' ? 'solid' : 'outline'"
+            (click)="onSelect('cheeses')">
+            CHEESE
+          </ion-button>
+        </div>
+
+        <!-- LISTA -->
+        <div *ngIf="filteredList.length > 0; else noResults" class="catalog-list">
+          <div class="catalog-card" *ngFor="let item of paginatedList">
+
+            <img [src]="item.imageUrl" class="catalog-image" />
+            <h3 class="catalog-item-title">{{ item.nameEn }}</h3>
+
+            <div class="catalog-detail">
+              <p><span class="label">Origin:</span> {{ item.origin }}</p>
+              <p><span class="label">Flavors:</span> {{ item.flavors }}</p>
+              <p><span class="label">Price:</span> ${{ item.price }}</p>
+
+              <p class="label">Description:</p>
+              <p class="description">{{ item.descriptionEn }}</p>
+            </div>
+
+            <ion-button
+              expand="block"
+              class="wishlist-btn"
+              (click)="toggleWishlist(item)"
+              [ngClass]="{
+                'wishlist-added': isInWishlist(item.id),
+                'wishlist-hint': loginHintSet.has(item.id)
+              }"
+            >
+              <ng-container *ngIf="loginHintSet.has(item.id); else normalState">
+                Login to add wishlist
+              </ng-container>
+
+              <ng-template #normalState>
+                <ng-container *ngIf="isInWishlist(item.id); else addText">
+                  Added ✔
+                </ng-container>
+
+                <ng-template #addText>
+                  ❤️ Add to wishlist
+                </ng-template>
+              </ng-template>
+            </ion-button>
+
+          </div>
+        </div>
+
+        <!-- SIN RESULTADOS -->
+        <ng-template #noResults>
+          <div class="empty-state-card">
+            <h2 class="empty-title">Product not found</h2>
+            <p class="empty-msg">Try looking for another wine or cheese.</p>
+          </div>
+        </ng-template>
+
+        <!-- PAGINACIÓN -->
+        <div class="pagination" *ngIf="filteredList.length > 0 && totalPages > 1">
+          <ion-button size="small" (click)="prevPage()" [disabled]="currentPage === 1">
+            Prev
+          </ion-button>
+
+          <span class="page-info">{{ currentPage }} / {{ totalPages }}</span>
+
+          <ion-button size="small" (click)="nextPage()" [disabled]="currentPage === totalPages">
+            Next
+          </ion-button>
+        </div>
+
+      </div>
+
+      <!-- COLUMNA DERECHA -->
+<ion-card
+  class="catalog-banner catalog-banner-right"
+  button="true"
+  [routerLink]="['/wishlist']"
+>
+  <div class="banner-wrapper">
+    <img class="banner-media" src="assets/icon/baner2.webp" alt="Wishlist" />
+
+    <!-- 🔥 TEXTO QUE APARECE AL PASAR EL MOUSE -->
+    <div class="banner-overlay">Madison Savour</div>
+  </div>
+
+  <h2>View your saved products</h2>
+  <p>Review your wishlist and complete your selection.</p>
+</ion-card>
+
+
+  </div>
+
+</div>

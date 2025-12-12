@@ -1,0 +1,200 @@
+/* ==================== */
+/*       LOGIN TITLE     */
+/* ==================== */
+
+.catalog-title {
+  position: relative;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  margin: 20px auto 10px;
+  width: 100%;
+  max-width: 500px;
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Icono izquierda */
+.catalog-title::before {
+  content: "";
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background-image: url("https://unpkg.com/ionicons@7.1.2/dist/svg/pizza-outline.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Icono derecha */
+.catalog-title::after {
+  content: "";
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background-image: url("https://unpkg.com/ionicons@7.1.2/dist/svg/wine-outline.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* ==================== */
+/*     LOGIN WRAPPER     */
+/* ==================== */
+
+.catalog-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 16px 40px;
+  margin-top: 10px;
+}
+
+/* ==================== */
+/*      LOGIN CARD       */
+/* ==================== */
+
+.catalog-card {
+  width: 100%;
+  max-width: 500px;
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* CONTENEDOR DEL ABOUT (fondo blanco) */
+.about-content {
+  --background: #ffffff;
+  padding: 24px 12px 40px;
+}
+
+/* ====== TIMELINE GENERAL ====== */
+
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: 24px auto 40px;
+  padding: 0 8px;
+}
+
+/* Línea vertical central */
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: rgba(0, 0, 0, 0.08);
+  transform: translateX(-50%);
+}
+
+/* Cada hito */
+.timeline-item {
+  display: flex;
+  align-items: stretch;
+  gap: 24px;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+/* Punto sobre la línea */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background: #f5c118;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(245, 193, 24, 0.25);
+}
+
+/* Alternancia tipo “S” */
+.timeline-item.left {
+  flex-direction: row;
+}
+
+.timeline-item.right {
+  flex-direction: row-reverse;
+}
+
+/* Contenido tipo tarjeta (mismo estilo “ABOUT US”) */
+.timeline-content {
+  flex: 0 0 45%;
+  background: #f3f3f3;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.timeline-content h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #f5c118;  /* mismo amarillo del título de ejemplo */
+}
+
+.timeline-content p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #222;
+}
+
+/* Contenedor de imagen */
+.timeline-image {
+  flex: 0 0 45%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline-image img {
+  width: 100%;
+  max-width: 260px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+}
+
+/* ====== RESPONSIVE: en móvil todo en columna ====== */
+
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 16px;
+  }
+
+  .timeline-item,
+  .timeline-item.left,
+  .timeline-item.right {
+    flex-direction: column;
+    padding-left: 32px;
+  }
+
+  .timeline-item::before {
+    left: 16px;
+    transform: translateX(0);
+  }
+
+  .timeline-content,
+  .timeline-image {
+    flex: 1 1 100%;
+  }
+
+  .timeline-image img {
+    max-width: 100%;
+  }
+}

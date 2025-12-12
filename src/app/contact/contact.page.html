@@ -1,0 +1,209 @@
+<!-- src/app/contact/contact.page.html -->
+
+<div class="contact-page">
+  <div class="page-content contact">
+    <div class="contact-layout">
+
+      <!-- COLUMNA IZQUIERDA (VIDEO) -->
+<ion-card
+  class="contact-banner contact-banner-left"
+  button="true"
+  [routerLink]="['/about']"
+>
+  <div class="banner-wrapper">
+
+    <img
+      class="banner-media"
+      src="assets/icon/logo5.gif"
+      alt="Maison banner"
+    />
+
+    <div class="banner-overlay"> </div>
+  </div>
+
+  <h2>About our maison</h2>
+  <p>Learn more about our philosophy, pairings and curated selection.</p>
+</ion-card>
+
+
+      <!-- COLUMNA CENTRAL (FORMULARIO) -->
+      <div class="contact-main">
+
+        <h1 class="contact-title">CONTACT</h1>
+
+        <p class="contact-subtitle">
+          Questions about pairings, events or your order? Send us a message and our sommeliers will get back to you.
+        </p>
+
+        <div class="contact-info-row">
+          <div class="info-pill">
+            <ion-icon name="mail-outline"></ion-icon>
+            <span>support@maisonsaveurs.com</span>
+          </div>
+          <div class="info-pill">
+            <ion-icon name="call-outline"></ion-icon>
+            <span>+64 9 000 000</span>
+          </div>
+        </div>
+
+        <!-- TARJETA DEL FORMULARIO -->
+        <div class="contact-card">
+          <h2 class="contact-card-title">Send us a message</h2>
+
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+            <!-- FULL NAME -->
+            <div class="form-field">
+              <ion-item
+                class="contact-item"
+                [ngClass]="{
+                  'has-error':
+                    fullNameControl?.invalid &&
+                    (fullNameControl?.dirty || fullNameControl?.touched)
+                }"
+              >
+                <ion-input
+                  formControlName="fullName"
+                  placeholder="Enter your full name"
+                ></ion-input>
+              </ion-item>
+
+              <div
+                class="field-error"
+                *ngIf="
+                  fullNameControl?.hasError('required') &&
+                  (fullNameControl?.dirty || fullNameControl?.touched)
+                "
+              >
+                Full name is required.
+              </div>
+            </div>
+
+            <!-- EMAIL -->
+            <div class="form-field">
+              <ion-item
+                class="contact-item"
+                [ngClass]="{
+                  'has-error':
+                    emailControl?.invalid &&
+                    (emailControl?.dirty || emailControl?.touched)
+                }"
+              >
+                <ion-input
+                  type="email"
+                  formControlName="email"
+                  placeholder="Enter your email"
+                ></ion-input>
+              </ion-item>
+
+              <div
+                class="field-error"
+                *ngIf="
+                  emailControl?.hasError('required') &&
+                  (emailControl?.dirty || emailControl?.touched)
+                "
+              >
+                Email is required.
+              </div>
+
+              <div
+                class="field-error"
+                *ngIf="
+                  emailControl?.hasError('email') &&
+                  !emailControl?.hasError('required') &&
+                  (emailControl?.dirty || emailControl?.touched)
+                "
+              >
+                Please enter a valid email address.
+              </div>
+            </div>
+
+            <!-- SUBJECT -->
+            <div class="form-field">
+              <ion-item class="contact-item">
+                <ion-input
+                  formControlName="subject"
+                  placeholder="Message subject"
+                ></ion-input>
+              </ion-item>
+            </div>
+
+            <!-- MESSAGE -->
+            <div class="form-field">
+              <ion-item
+                class="contact-item contact-textarea-item"
+                [ngClass]="{
+                  'has-error':
+                    messageControl?.invalid &&
+                    (messageControl?.dirty || messageControl?.touched)
+                }"
+              >
+                <ion-textarea
+                  auto-grow="true"
+                  formControlName="message"
+                  placeholder="Write your message..."
+                ></ion-textarea>
+              </ion-item>
+
+              <div
+                class="field-error"
+                *ngIf="
+                  messageControl?.hasError('required') &&
+                  (messageControl?.dirty || messageControl?.touched)
+                "
+              >
+                Message is required.
+              </div>
+            </div>
+
+            <!-- BOTÓN -->
+            <ion-button
+              expand="block"
+              class="contact-submit-btn"
+              type="submit"
+              [disabled]="isSending || contactForm.invalid"
+            >
+              <ng-container *ngIf="!isSending; else sendingTpl">
+                SEND MESSAGE
+              </ng-container>
+              <ng-template #sendingTpl>
+                SENDING...
+              </ng-template>
+            </ion-button>
+
+            <!-- MENSAJES GLOBALES -->
+            <p *ngIf="sendOk" class="msg-success">
+              Message sent successfully.
+            </p>
+
+            <p *ngIf="sendError" class="msg-error">
+              Error sending the message. Please try again later.
+            </p>
+          </form>
+        </div>
+      </div>
+
+      <!-- COLUMNA DERECHA (IMAGEN) -->
+      <ion-card
+        class="contact-banner contact-banner-right"
+        button="true"
+        [routerLink]="[' ']"
+      >
+        <div class="banner-wrapper">
+          <img
+            class="banner-media"
+            src="assets/icon/banner3.webp"
+            alt="Events & tastings"
+          />
+          <div class="banner-overlay">Contact support@maisonsaveurs.com</div>
+        </div>
+
+        <h2>Private tastings</h2>
+        <p>
+          Contact us to organize curated wine & cheese experiences for your guests.
+        </p>
+      </ion-card>
+
+    </div>
+  </div>
+</div>

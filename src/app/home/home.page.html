@@ -1,0 +1,164 @@
+<!-- src/app/home/home.page.html -->
+<!-- NOTE: ion-content does NOT go here, only the page content -->
+
+<div class="home-page">
+
+  <!-- HERO WITH VIDEO BACKGROUND -->
+  <section class="hero">
+    <!-- BACKGROUND VIDEO -->
+    <div class="hero-bg-video">
+      <video
+        #heroVideo
+        autoplay
+        muted
+        loop
+        playsinline
+      >
+        <!-- CHECK THIS LINE: no backslashes, no line breaks -->
+        <source src="assets/icon/winepromo.mp4" type="video/mp4" />
+      </video>
+
+      <!-- TOP OVERLAY (stronger contrast) -->
+      <div class="video-overlay-top"></div>
+
+      <!-- BOTTOM OVERLAY (fade downwards) -->
+      <div class="video-overlay-bottom"></div>
+    </div>
+
+    <!-- TEXT OVER THE VIDEO -->
+    <div class="hero-text">
+      <h1 class="lux-title">MAISON SAVEURS</h1>
+
+      <h2 class="lux-subtitle">
+        The art of wine and cheese, brought together.
+      </h2>
+
+      <p class="lux-paragraph">
+        Discover our gourmet selection and let our AI assistant guide you to
+        exquisite pairings crafted for tastings, dinners, and unforgettable
+        celebrations.
+      </p>
+
+      <div class="hero-actions">
+        <ion-button
+          shape="round"
+          size="default"
+          class="btn-primary"
+          routerLink="/catalog"
+        >
+          View Catalog
+        </ion-button>
+
+        <ion-button
+          shape="round"
+          size="default"
+          fill="outline"
+          class="btn-outline"
+          routerLink="/ai-pairings"
+        >
+          AI Recommendations
+        </ion-button>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section">
+    <div class="section-header">
+      <h2>How It Works</h2>
+      <p>Your journey from the first sip to the perfect pairing.</p>
+    </div>
+
+    <section class="awards-single-row">
+      <div class="awards-row">
+        <img src="assets/icon/logo1.jpg" alt="Logo 1" />
+        <img src="assets/icon/logo2.svg" alt="Logo 2" />
+        <img src="assets/icon/logo3.svg" alt="Logo 3" />
+        <img src="assets/icon/logo4.png" alt="Logo 4" />
+        <img src="assets/icon/logo6.png" alt="Logo 6" />
+      </div>
+    </section>
+
+    <div class="cards-3">
+      <article class="card">
+        <h3>1. Explore the Catalog</h3>
+        <p>
+          Filter by wine type, intensity, origin, and cheese style to find
+          inspiration.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>2. Choose Your Pairing</h3>
+        <p>
+          Use the AI assistant to match bottles and cheeses based on your
+          preferences and the occasion.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>3. Save Your Favorites</h3>
+        <p>
+          Add wines and cheeses to your wishlist so you never lose track of your
+          discoveries.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- FEATURED PAIRINGS -->
+  <section class="section pairings">
+    <div class="section-header">
+      <h2>Featured Pairings</h2>
+      <p>Some combinations to begin your experience.</p>
+    </div>
+
+    <div class="cards-3">
+      <article class="card">
+        <span class="pairing-tag">Aperitif</span>
+        <h3>Rosé &amp; Goat Cheese</h3>
+        <p>
+          Freshness and balanced acidity for summer afternoons and light
+          starters.
+        </p>
+      </article>
+
+      <article class="card">
+        <span class="pairing-tag">Dinner</span>
+        <h3>Reserva Red &amp; Aged Gouda</h3>
+        <p>
+          Body and intensity ideal for red meats and hearty boards.
+        </p>
+      </article>
+
+      <article class="card">
+        <span class="pairing-tag">Celebration</span>
+        <h3>Brut Sparkling &amp; Brie</h3>
+        <p>
+          Fine bubbles and creamy texture for memorable toasts.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="cta-strip">
+    <div class="cta-strip-text">
+      <h2>Sign in and save your favorite pairings</h2>
+      <p>
+        Personalize your experience, keep your history, and revisit your perfect
+        combinations anytime.
+      </p>
+    </div>
+
+    <ion-button
+      shape="round"
+      size="default"
+      class="btn-dark"
+      routerLink="/login"
+    >
+      Sign In
+    </ion-button>
+  </section>
+
+</div>

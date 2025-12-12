@@ -1,0 +1,94 @@
+<!-- src/app/wishlist/wishlist.page.html -->
+
+<div class="wishlist-page">
+
+  <!-- SPINNER A PANTALLA COMPLETA -->
+  <div *ngIf="loading" class="catalog-loading-wrapper">
+    <ion-spinner name="crescent" class="catalog-loading"></ion-spinner>
+  </div>
+
+  <!-- CONTENIDO NORMAL (solo cuando NO está cargando) -->
+  <div *ngIf="!loading" class="page-content catalog">
+
+    <h1 class="catalog-title">MY WISHLIST</h1>
+
+    <!-- LISTA DE PRODUCTOS (si hay items) -->
+    <div
+      *ngIf="items.length > 0; else emptyState"
+      class="catalog-list">
+
+      <div
+        class="catalog-card"
+        *ngFor="let item of items"
+        [class.fade-out]="item.removing">
+
+        <img
+          *ngIf="item.imageUrl"
+          [src]="item.imageUrl"
+          [alt]="item.name"
+          class="catalog-image" />
+
+        <h3 class="catalog-item-title">{{ item.name }}</h3>
+
+        <div class="catalog-detail">
+
+          <p *ngIf="item.origin">
+            <span class="label">Origin:</span> {{ item.origin }}
+          </p>
+
+          <p *ngIf="item.description">
+            <span class="label">Description:</span>
+            <span class="description">{{ item.description }}</span>
+          </p>
+
+          <p>
+            <span class="label">Type:</span>
+            {{ item.productType || 'Unknown' }}
+          </p>
+
+          <p>
+            <span class="label">Product ID:</span>
+            {{ item.productId }}
+          </p>
+
+          <p *ngIf="item.price != null">
+            <span class="label">Price:</span>
+            {{ item.price | currency:'NZD':'symbol':'1.2-2' }}
+          </p>
+
+          <p *ngIf="item.createdAt">
+            <span class="label">Added at:</span>
+            <span class="description">
+              {{ item.createdAt | date:'short' }}
+            </span>
+          </p>
+
+          <p>
+            <span class="label">Wishlist ID:</span>
+            <span class="description">{{ item.wishlistId }}</span>
+          </p>
+
+        </div>
+
+        <ion-button
+          expand="block"
+          class="wishlist-btn wishlist-remove-btn"
+          (click)="remove(item)">
+          🗑 Remove from wishlist
+        </ion-button>
+
+      </div>
+    </div>
+
+    <!-- ESTADO SIN ITEMS -->
+    <ng-template #emptyState>
+      <div class="empty-state-card">
+        <h2 class="empty-title">No items in your wishlist yet</h2>
+        <p class="empty-msg">
+          Browse the catalog and tap “❤️ Add to wishlist” to save your favourite wines and cheeses.
+        </p>
+      </div>
+    </ng-template>
+
+  </div>
+</div>

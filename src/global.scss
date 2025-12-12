@@ -1,0 +1,189 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ */
+
+/* Core CSS required for Ionic components */
+@import "@ionic/angular/css/core.css";
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/* 🔥 IMPORTANTE: NO ACTIVAR DARK SYSTEM */
+ /* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+/* @import '@ionic/angular/css/palettes/dark.system.css'; */
+
+
+/* ========================================================================= */
+/* FOOTER */
+/* ========================================================================= */
+
+ion-footer.app-footer {
+  --background: #000 !important;
+  background: #000 !important;
+  color: #fff !important;
+  display: block !important;
+  width: 100% !important;
+  border-top: 1px solid #222;
+  z-index: 1000;
+}
+
+@media (max-width: 768px) {
+  .footer-inner {
+    padding: 24px 16px;
+  }
+
+  .footer-top,
+  .footer-middle,
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-right,
+  .footer-bottom,
+  .footer-links {
+    text-align: left;
+  }
+
+  .footer-middle .footer-logo-box,
+  .footer-middle .footer-contact,
+  .footer-middle .footer-mission {
+    width: 100%;
+  }
+
+  .subscribe-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .subscribe-button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+/* ========================================================================= */
+/* HEADER (NAV) — FUNCIONANDO 100% EN FIREFOX Y CHROME */
+/* ========================================================================= */
+
+/* Header fijo arriba */
+.main-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Fondo negro + texto blanco forzado */
+ion-header.main-header,
+ion-header.main-header ion-toolbar {
+  --background: #000000 !important;
+  background: #000000 !important;
+  --color: #ffffff !important;
+  color: #ffffff !important;
+}
+
+/* Logo + texto */
+.brand-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.brand-title .ms {
+  height: 20px;
+  width: auto;
+}
+
+/* Menú escritorio: botones planos */
+.desktop-menu ion-button {
+  --background: transparent;
+  --background-hover: transparent;
+  --background-activated: transparent;
+  --color: #ffffff;
+  --border-radius: 0;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-left: 4px;
+}
+
+.desktop-menu ion-button:hover {
+  text-decoration: underline;
+}
+
+ 
+ 
+/* ================= NAV RESPONSIVE DEFINITIVO ================= */
+
+/* Por defecto (móvil): solo hamburguesa */
+.mobile-menu {
+  display: flex !important;
+}
+
+.desktop-menu {
+  display: none !important;
+}
+
+/* En pantallas ≥769px: menú grande visible */
+@media (min-width: 769px) {
+  .desktop-menu {
+    display: flex !important;
+  }
+
+  .mobile-menu {
+    display: none !important;
+  }
+}
+
+
+.user-menu {
+  position: absolute;
+  top: 56px;          /* ajusta según la altura del toolbar */
+  right: 16px;
+  background: #222;
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  z-index: 1000;
+  min-width: 200px;
+}
+
+.user-menu p {
+  margin: 0 0 4px;
+  font-size: 14px;
+}
+
+.user-menu button {
+  width: 100%;
+  margin-top: 6px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  background: #4b0082;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.user-menu button:hover {
+  background: #5c00a8;
+}
+
+
+.social-icon {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  filter: invert(1) brightness(2); /* <-- hace el icono blanco */
+}

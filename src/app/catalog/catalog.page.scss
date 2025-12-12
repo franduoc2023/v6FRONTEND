@@ -1,0 +1,477 @@
+/* ==================== */
+/*   FONDO GLOBAL       */
+/* ==================== */
+
+.catalog {
+  background: #000;
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ==================== */
+/*       TITLE TIPO ABOUT */
+/* ==================== */
+
+.catalog-title {
+  position: relative;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  margin: 20px auto 10px;
+  width: 100%;
+  max-width: 500px;
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.catalog-title::before {
+  content: "";
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background-image: url("https://unpkg.com/ionicons@7.1.2/dist/svg/pizza-outline.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.catalog-title::after {
+  content: "";
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background-image: url("https://unpkg.com/ionicons@7.1.2/dist/svg/wine-outline.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* ==================== */
+/*       SEARCHBAR       */
+/* ==================== */
+
+.catalog-search {
+  width: 480px;
+  max-width: 90%;
+  --background: #1c1c1c;
+  --color: #fff;
+  --placeholder-color: #777;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+/* ==================== */
+/*       TOGGLE TYPE     */
+/* ==================== */
+
+.catalog-toggle {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+/* ==================== */
+/*   LISTA Y TARJETAS    */
+/* ==================== */
+
+.catalog-list {
+  width: 480px;
+  max-width: 90%;
+}
+
+.catalog-card {
+  background: #111;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 28px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+}
+
+.catalog-image {
+  width: 100%;
+  height: 360px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 12px;
+}
+
+.catalog-item-title {
+  text-align: center;
+  margin: 16px 0 8px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.catalog-item-origin {
+  font-size: 14px;
+  color: #ccc;
+}
+
+/* ==================== */
+/*   MENSAJE SIN DATA    */
+/* ==================== */
+
+.empty-state {
+  margin-top: 24px;
+  text-align: center;
+  color: #ffffff;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* ==================== */
+/*      PAGINACIÓN       */
+/* ==================== */
+
+.pagination {
+  margin-top: 16px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.page-info {
+  color: #ffffff;
+  font-size: 14px;
+}
+
+/* ==================== */
+/*     EMPTY STATE       */
+/* ==================== */
+
+.empty-state-card {
+  width: 90%;
+  max-width: 550px;
+  margin: 40px auto 60px;
+  padding: 30px 24px;
+
+  background: #ffffff;
+  border-radius: 16px;
+  text-align: center;
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.empty-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.empty-msg {
+  font-size: 14px;
+  color: #444;
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* ==================== */
+/*   BOTONES TOGGLE      */
+/* ==================== */
+
+.btn-wines {
+  --background: #6a0d25;
+  --color: #fff;
+  --border-radius: 12px;
+  --padding-start: 20px;
+  --padding-end: 20px;
+  --border-color: #6a0d25;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(106, 13, 37, 0.35);
+}
+
+.btn-wines[fill="outline"] {
+  --background: transparent;
+  --color: #6a0d25;
+}
+
+.btn-cheese {
+  --background: #c29d59;
+  --color: #000;
+  --border-radius: 12px;
+  --padding-start: 20px;
+  --padding-end: 20px;
+  --border-color: #c29d59;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(194, 157, 89, 0.35);
+}
+
+.btn-cheese[fill="outline"] {
+  --background: transparent;
+  --color: #c29d59;
+}
+
+/* ==================== */
+/*   DETALLE PRODUCTO    */
+/* ==================== */
+
+.catalog-field {
+  font-size: 14px;
+  color: #ddd;
+  margin: 4px 0;
+  line-height: 1.4;
+}
+
+.catalog-field .label {
+  font-weight: 700;
+  color: #fff;
+  margin-right: 6px;
+}
+
+.catalog-detail {
+  margin-top: 14px;
+  color: #eee;
+  font-size: 15px;
+  line-height: 1.5;
+  padding: 12px;
+  background: #0d0d0d;
+  border-radius: 12px;
+  border: 1px solid #222;
+}
+
+.catalog-detail .label {
+  font-weight: 700;
+  color: #ffffff;
+  display: inline-block;
+  width: 110px;
+}
+
+.catalog-detail .description {
+  margin-top: 4px;
+  color: #ccc;
+}
+
+/* ==================== */
+/*   BOTÓN WISHLIST      */
+/* ==================== */
+
+ion-button.wishlist-btn {
+  --background: #7c3aed;
+  --background-hover: #6d28d9;
+  --background-activated: #5b21b6;
+  --background-focused: #6d28d9;
+  --color: #ffffff;
+
+  --border-radius: 999px;
+  --border-width: 0;
+  --box-shadow: 0 4px 10px rgba(124, 58, 237, 0.4);
+
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-top: 12px;
+
+  box-shadow: none;
+  outline: none;
+}
+
+ion-button.wishlist-btn::part(native) {
+  border-radius: 999px;
+  outline: none;
+}
+
+ion-button.wishlist-btn:hover::part(native) {
+  transform: translateY(-1px);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+@keyframes wishlist-shake {
+  0%   { transform: translateX(0); }
+  25%  { transform: translateX(-2px); }
+  50%  { transform: translateX(2px); }
+  75%  { transform: translateX(-2px); }
+  100% { transform: translateX(0); }
+}
+
+ion-button.wishlist-btn:active::part(native) {
+  animation: wishlist-shake 0.15s linear;
+}
+
+ion-button.wishlist-btn.wishlist-added {
+  --background: #22c55e;
+  --background-hover: #16a34a;
+  --background-activated: #15803d;
+  --background-focused: #16a34a;
+  --box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.5),
+                0 6px 14px rgba(34, 197, 94, 0.55);
+}
+
+/* ==================== */
+/*   LAYOUT 3 COLUMNAS   */
+/* ==================== */
+/* AHORA USAMOS FLEX PARA QUE EL BANNER NO ESTIRE NADA RARO */
+
+.catalog-layout {
+  display: flex;                 /* 🔥 en vez de grid */
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 40px;
+}
+
+/* Columna central */
+.catalog-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 auto;               /* solo lo que mida su contenido */
+}
+
+/* ==================== */
+/*   BANNERS LATERALES   */
+/* ==================== */
+
+.catalog-banner {
+  flex: 0 0 auto;               /* no crece */
+  width: 400px;                 /* 🔥 ancho fijo del banner */
+  margin-top: 80px;  
+  background: #111;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+  color: #fff;
+  text-align: center;
+}
+
+ 
+
+.catalog-banner h2 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 8px 0 4px;
+}
+
+.catalog-banner p {
+  font-size: 13px;
+  color: #ddd;
+  margin: 0;
+}
+
+/* ==================== */
+/*   RESPONSIVO MOBILE   */
+/* ==================== */
+
+@media (max-width: 960px) {
+  .catalog-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .catalog-banner {
+    width: 260px;
+  }
+
+  .catalog-search,
+  .catalog-list {
+    width: 100%;
+    max-width: 480px;
+  }
+}
+
+
+.catalog-banner {
+  cursor: pointer;
+  transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease;
+}
+
+.catalog-banner:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 22px rgba(255, 255, 255, 0.25);
+  background-color: #1a1a1a;
+}
+
+
+/* ==================== */
+/*   OCULTAR EN MÓVIL   */
+/* ==================== */
+@media (max-width: 960px) {
+  .catalog-banner {
+    display: none !important;
+  }
+}
+
+
+.catalog-loading-wrapper {
+  position: fixed;        /* 🔥 cubre toda la pantalla */
+  inset: 0;               /* top:0; right:0; bottom:0; left:0 */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  z-index: 9999;          /* por encima del contenido */
+}
+
+/* Estilo directo al ion-spinner */
+.catalog-loading {
+  width: 64px;
+  height: 64px;
+  --color: #ffffff;       /* 🔥 spinner blanco sobre fondo negro */
+}
+
+ .catalog-banner img,
+.catalog-banner video {
+  width: 100%;
+  height: 600px;       /* 🔥 misma altura para ambos */
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+
+
+
+
+
+
+
+.banner-overlay {
+  position: absolute;
+  inset: 0; 
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.55);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #fff;
+  font-size: 26px;
+  font-weight: 700;
+
+  opacity: 0;                  
+  transition: opacity .25s ease;
+  pointer-events: none;
+}
+
+ .catalog-banner:hover .banner-overlay {
+  opacity: 1;
+}
+
+
+.catalog-page {
+  background: radial-gradient(
+      circle at center,
+      #0a0a0a 0%,
+      #000000 70%
+  );
+}
